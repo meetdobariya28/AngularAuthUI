@@ -1,0 +1,37 @@
+<div class="login-container">
+    <form class="login-form" [formGroup]="form">
+      <h1>Welcome Back</h1>
+      <p>Please login to your account</p>
+      <div class="form-group">
+      <div class="input-group">
+        <div class="input-field" [class.error]="form.controls['username'].dirty && this.form.get('username')?.errors?.['required']">
+             <!-- <span class="fa fa-user p-2"></span> -->
+            <input type="text" id="username" name="username"  autocomplete="username" placeholder="Username" formControlName="username">
+        </div>
+        <div *ngIf="form.controls['username'].dirty && this.form.get('username')?.errors" style="color: red;">
+            <div *ngIf=" form.controls['username'].dirty && this.form.get('username')?.errors?.['required']">
+                <small>*Username Field Required!</small>
+            </div> 
+        </div>
+      </div>
+    </div>
+      <div class="form-group">
+      <div class="input-group">
+        <div class="input-field" [class.error]="form.controls['password'].dirty && this.form.get('password')?.errors?.['required']">
+            <!-- <span class="fa fa-lock p-2"></span> -->
+             <input type="password" id="password" name="password"  autocomplete="current-password" placeholder="Password" formControlName="password">
+        </div>
+        <div *ngIf="form.controls['password'].dirty && this.form.get('password')?.errors" style="color: red;">
+            <div *ngIf="form.controls['password'].dirty && this.form.get('password')?.errors?.['required']">
+                <small>*Password Required!</small>
+            </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" (click)="OnLogin()">Login</button>
+      <div class="bottom-text">
+        <p>Don't have an account? <a href="http://localhost:4200/signup">Sign Up</a></p>
+        <p><a href="#">Forgot password?</a></p>
+      </div>
+    </form>
+  </div>

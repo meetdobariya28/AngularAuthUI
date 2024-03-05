@@ -1,0 +1,69 @@
+<div class="wrapper">
+    <h2>Registration</h2>
+    <form [formGroup]="form" action="#">
+        <div class="input-box">
+            <input type="text" placeholder="Enter your First name" formControlName="firstname">
+            <div *ngIf="form.controls['firstname'].dirty && this.form.get('firstname')?.errors" style="color: red;">
+                <div *ngIf="form.controls['firstname'].dirty && this.form.get('firstname')?.errors?.['required']">
+                    <small> *First name Field Required!</small>
+                </div>
+            </div>
+          </div>
+        <div class="input-box">
+        <input type="text" placeholder="Enter your Last name" formControlName="lastname">
+        <div *ngIf="form.controls['lastname'].dirty && this.form.get('lastname')?.errors" style="color: red;">
+            <div *ngIf="form.controls['lastname'].dirty && this.form.get('lastname')?.errors?.['required']">
+                <small>*Last name Field Required!</small>
+            </div>
+        </div>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Enter your Username" formControlName="username">
+        <div *ngIf="form.controls['username'].dirty && this.form.get('username')?.errors" style="color: red;">
+            <div *ngIf=" form.controls['username'].dirty && this.form.get('username')?.errors?.['required']">
+                <small>*Username Field Required!</small>
+            </div> 
+        </div>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Enter your email" formControlName="email">
+        <div *ngIf="form.controls['email'].dirty && this.form.get('email')?.errors" style="color: red;">
+            <div *ngIf="form.controls['email'].dirty && this.form.get('email')?.errors?.['required']">
+                <small>*Email Required!</small>
+            </div>
+            <div *ngIf="this.form.get('email')?.errors?.['email']">
+                <small>*Please write valid email!</small>
+            </div>
+        </div>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Create password" formControlName="password">
+        <div *ngIf="form.controls['password'].dirty && this.form.get('password')?.errors" style="color: red;">
+            <div *ngIf="this.form.get('password')?.errors?.['required']">
+                <small>*Password Required!</small>
+            </div>
+            <div *ngIf="this.form.get('password')?.errors?.['maxlength']">
+                <small>*Maximum 12 characters only!</small>
+            </div>
+            <div *ngIf="this.form.get('password')?.errors?.['minlength']">
+                <small>*Minimum 8 characters required!</small>
+            </div>
+        </div>
+      </div>
+      <div class="policy">
+        <input type="checkbox" formControlName="checkbox">
+        <h3>I accept all terms & condition</h3>
+        <div *ngIf="this.form.get('checkbox')?.errors" style="color: red;">
+            <div *ngIf="this.form.get('checkbox')?.errors?.['requiredtrue']">
+                <small>*accept it</small>
+            </div>
+        </div>
+      </div>
+      <div class="input-box button">
+        <button type="submit" (click)="Save()">Submit</button>
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="http://localhost:4200/login">Login now</a></h3>
+      </div>
+    </form>
+  </div>
